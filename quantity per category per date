@@ -1,0 +1,8 @@
+SELECT COUNT(d.ProductID) AS Quantity,
+  ProdctCategory,
+  DateID AS Date
+FROM DailyInventory AS d
+LEFT JOIN Product AS p
+ON p.ProductID=d.ProductID
+GROUP BY ProdctCategory, date
+ORDER BY date
