@@ -1,0 +1,6 @@
+SELECT count(DISTINCT ProductID) AS Products,
+       State
+FROM DailyInventory AS d
+LEFT JOIN WarehouseLocation AS w
+ON w.WarehouseID = d.WarehouseID
+GROUP BY State
