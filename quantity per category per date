@@ -1,14 +1,8 @@
-WITH MAX AS (
-  SELECT ROW_NUMBER() OVER (PARTITION BY ProductID ORDER BY Date DESC) AS rn,
-    ProductID,
-    StockQuantity AS Quantity,
-    Date
-  FROM DailyInventory )
-  
-SELECT Quantity,
-  Date,
-  ProductCategory
-FROM MAX AS m
-LEFT JOIN Product AS p
-ON p.ProductID=m.ProductID
-WHERE RN = 1
+SELECT SUM(StockQuantity) AS Quantity,
+  ProdctCategory,
+  DateID AS Date
+FROM DailyInventory AS d
+INNER JOIN Product AS p
+ON p.ProductID=d.ProductID
+GROUP BY ProdctCategory, Date
+ORDER BY Date
