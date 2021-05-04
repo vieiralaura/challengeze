@@ -1,8 +1,0 @@
-SELECT SUM(StockQuantity) AS Quantity,
-  ProdctCategory,
-  DateID AS Date
-FROM DailyInventory AS d
-INNER JOIN Product AS p
-ON p.ProductID=d.ProductID
-GROUP BY ProdctCategory, Date
-ORDER BY Date
